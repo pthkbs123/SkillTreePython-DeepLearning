@@ -40,7 +40,7 @@ dialted Conv 뒤에 gate network 사용해서 다음 layer로 전달할 비율�
 
 1. MultipSpeaker Speech Generation : 여러 스피커들의 스피치를 만드는 실험. 데이터는 VCTK (44시간 데이터, 109명의 스피커)를 이용. receptive field를 넓혔다고 하더라도 최대 길이는 300ms정도(2-3 phonemes). 109명의 스피커 데이터를 전부 사용하니 검증셋 성능도 더 좋아짐.
 
-2. TTS (TEXT-TO-SPEECH) : 구글의 North American English(24.6시간)와 Mandarin Chinese(34.8시간) TTS 스피치 데이터베이스를 이용. linguistic features가 필요하고 $F_0$도 이용하여 훈련하였고, receptive fild size는 240ms. HMM과 LSTM-RNN모델을 만들어서 비교함. 퀄리티 테스트는 subjective paired comparison tests와 mean opinion score(MOS; 5 Likert scale)을 이용.
+2. TTS (TEXT-TO-SPEECH) : 구글의 North American English(24.6시간)와 Mandarin Chinese(34.8시간) TTS 스피치 데이터베이스를 이용. linguistic features가 필요하고 $F_0$도 이용하여 훈련하였고, receptive fild size는 240ms. HMM과 LSTM-RNN모델을 만들어서 비교함. 퀄리티 테스트는 subjective paired comparison tests와 mean opinion score(MOS; 5 Likert scale)을 이용. 논문에서 사용한 결과표는 다음과 같음.
 
 <img src ='https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbSq01U%2FbtrIuX8Bwxw%2F5fxry8ezSkiqKk0fPOYGwK%2Fimg.png'>
 
