@@ -42,7 +42,7 @@ Decoder 자체는 Encoder에서 Latent Vector만 잘 뽑아낸다면 상대적�
 ## Experiments
 
 <img src ='https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FlIinY%2FbtrqnjushPK%2FQXCAIRqplP7lA9TFeaaTGk%2Fimg.png'>
-* 왼 쪽은 Classification 성능이고, 오른 쪽은 Fine-tuning을 통한 Segmentation 성능이다.  
+왼 쪽은 Classification 성능이고, 오른 쪽은 Fine-tuning을 통한 Segmentation 성능이다.  
 
 기존 방식들에 비해서 더 높은 Generalization 성능을 바탕으로 정확도가 향상되었을 뿐 만 아니라, Random Sampling과 Masking 자체가 이미 꽤나 강력한 Augmentation과 같은 기능을 하기 때문에, 최소한의 Augmentation만으로도 높은 정확도를 달성할 수 있었다고 한다.  
 기존 방식 대비 Encoder에서 사용하는 입력 사이즈가 1/4 정도 수준이기 때문에, Parameter가 보다 적고 가벼우며, Scalable 한 특성을 지닌다.
