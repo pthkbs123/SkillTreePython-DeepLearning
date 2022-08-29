@@ -32,5 +32,5 @@ Variational Bayesian(VB) 접근은 다루기 힘든 사후분포를 갖는 잠�
 3. x에 대한 효율적인 marginal inference. 즉, 데이터의 마지널한 확률분포 P(X)에 대한 근사추론. 이는 x에 대한 사전분포가 요구되는 모든 추론 테스크에 사용될 수 있다.
 
 위 문제를 해결하기 위해 z의 intractable한 실제 사후분포 pθ(z∣x)에 대한 근사분포인 qϕ(z∣x)를 도입한다.  
-qϕ(z∣x) : probabilistic Encoder - 데이터가 주어졌을 때 잠재표현 z의 모든 가능한 값에 대한 분포를 반환.  
-pθ(x∣z) : probabilistic Decoder - 잠재표현 z가 주어졌을 때 대응되는 x값들에 대한 분포를 반환.  
+- qϕ(z∣x) : probabilistic Encoder - 데이터가 주어졌을 때 잠재표현 z의 모든 가능한 값에 대한 분포를 반환.  
+- pθ(x∣z) : probabilistic Decoder - 잠재표현 z가 주어졌을 때 대응되는 x값들에 대한 분포를 반환.  
