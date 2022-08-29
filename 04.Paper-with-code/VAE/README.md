@@ -34,3 +34,46 @@ Variational Bayesian(VB) 접근은 다루기 힘든 사후분포를 갖는 잠�
 위 문제를 해결하기 위해 z의 intractable한 실제 사후분포 pθ(z∣x)에 대한 근사분포인 qϕ(z∣x)를 도입한다.  
 - qϕ(z∣x) : probabilistic Encoder - 데이터가 주어졌을 때 잠재표현 z의 모든 가능한 값에 대한 분포를 반환.  
 - pθ(x∣z) : probabilistic Decoder - 잠재표현 z가 주어졌을 때 대응되는 x값들에 대한 분포를 반환.  
+
+## The variational bound
+
+x의 가능도는 아래와 같은 식으로 나타낼 수 있다.
+
+<img src ='https://velog.velcdn.com/images%2Fchangdaeoh%2Fpost%2Fc10e401f-06d5-4c19-9e6d-91388be7f56e%2Fimage.png'>
+
+DKL(qφ(z|x (i) )||pθ(z|x (i) )) 이 Term 은 항상 Nonnegative 이니까 식은 다음 식들과 같이 변하는데, 
+
+<img src ='https://velog.velcdn.com/images%2Fchangdaeoh%2Fpost%2Ffb6d2181-f95f-4321-8972-acffc81840b6%2Fimage.png'>
+여기서의 우변을 variational lower bound라고 부르고, 이 식을 다르게도 풀 수 있는데,
+
+<img src ='https://velog.velcdn.com/images%2Fchangdaeoh%2Fpost%2F19cb6c10-632e-49a9-88b6-57715acdb71f%2Fimage.png'>
+
+이 lower bound를 varaiational parameter 인 φ와 generative parameter인  θ에 대해서 모두 최적화 하고 싶은 것. 하지만 이 lower bound로 gradient 를 흘려보내 주는 것은 약간 문제가 있는데, 이런 경우에 일반적으로 사용하는 monte carlo gradient estimator는 분산이 커서 우리의 목적에는 실용적이지 않다고 한다. 
+
+## The SGVB estimator and AEVB algorithm
+
+최적화 하고 싶은 식은 2.2에서 찾았는데, 이제 이 식을 어떻게 optimize 할 건지 estimator 를 찾아야 한다. 2.4에서와 같은 mild한 조건이 있다면, posterior를 다음과 같이 reparameterize 할 수 있다. 
+
+<img src ='https://velog.velcdn.com/images%2Fchangdaeoh%2Fpost%2F535378f3-13d9-483e-a9f1-828228d5968e%2Fimage.png'>
+
+이제 z에 대한 어떤 함수 f(z)의 기대값의 몬테카를로 추정량은 다음과 같다.
+
+<img src ='https://velog.velcdn.com/images%2Fchangdaeoh%2Fpost%2F87fb6f65-cd1e-4ea3-b7c6-2b52aa8ec86c%2Fimage.png'>
+
+이 estimator를 variational lower bound에 적용하여, 우리의 일반적인, Stochastic Gradient Variational Bayes estimator를 만들어 낼 수 있는 것이다.
+
+<img src ='https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FcklwoI%2FbtqOqUcyitW%2FBlvsbTi8AOb1Zm3SJeZNJK%2Fimg.png'>
+
+그런데 종종 Lower Bound에서 첫번째 term인 qϕ(z∣x)와 pθ(z)에 대한 KLD가 분석적으로 직접 구해지는 경우가 있음(부록B에 증명). 이 경우 MC 방법에 의한 근사를 LB의 두번째 term에 대해서만 사용하면 되어 추정량의 분산이 줄어들게 된다. 이런 방식의 두번째 SGVB 추정량은 다음과 같이 표현된다.
+
+<img src ='https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FdvaiiE%2FbtqOleXElVW%2FCaeOXe6h9iYwkUfOVMqKsK%2Fimg.png'>
+
+N datapoint 를 가진 dataset X 가 주어진다면, 전체 dataset 에 대한 Lower bound 또한 구할 수 있다. 
+
+<img src ='https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FD5BPy%2FbtqOnyuMkPY%2FNkbMdi3N6O66gmQH2afLik%2Fimg.png'>
+
+이제 우리의 최적화대상인 LB에 대한 gradient가 구해질 수 있고 이것을 이용하는 확률적 최적화방법인 SGD와 그 변종 방법들이 모델 파라미터 업데이트에 이용될 수 있다. 전체 과정은 다음과 같다.
+
+<img src ='https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FcB9Vu9%2FbtqOhOZI65O%2FgwO8CoBSudgRkXWrAIaKN1%2Fimg.png'>
+
+## The reparametrization trick 
