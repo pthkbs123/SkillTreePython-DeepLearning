@@ -18,6 +18,6 @@ MAE의 접근 방법은 간단한데, 입력 이미지의 Patch를 임의로 골
 ### introduction: ViT (Vision Transformer)
 이전에 CNN 구조(ResNet)을 배운 적이 있으나, 최근에는 조금 다른 방법을 사용한다. ViT는 CNN과 다르게 self-attention 모듈을 여러 block으로 쌓아서 표현력을 높이는 구조이다.
 
-<img src ='(https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbbDpDH%2FbtroSsGRwqn%2FV9oXahTZpdQfbCOU3eWzF0%2Fimg.png)'>
+<img src ='https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbbDpDH%2FbtroSsGRwqn%2FV9oXahTZpdQfbCOU3eWzF0%2Fimg.png'>
 
 CNN 기반 model과는 입력을 사용하는 방법에서 조금 차이가 있는데, Language에서 sequence의 sample 단위는 word token인데 이것을 일정 크기의 patch(16x16)으로 나눠서 입력에 사용한다.  
