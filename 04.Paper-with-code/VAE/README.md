@@ -77,3 +77,17 @@ N datapoint 를 가진 dataset X 가 주어진다면, 전체 dataset 에 대한 
 <img src ='https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FcB9Vu9%2FbtqOhOZI65O%2FgwO8CoBSudgRkXWrAIaKN1%2Fimg.png'>
 
 ## The reparametrization trick 
+현재 고려중인 모델에서 z는 추정된 qϕ(z∣x)로부터 샘플링되는 random variable 이다. 반면 역전파를 통한 end-to-end 모델업데이트를 위해서는 연결된 모든 요소들이 미분가능해야한다. 샘플링은 미분이 불가능한 operation이므로, 뭔가 처리가 필요하다.  
+
+그래서 논문의 저자들은 qϕ(z∣x)로부터 z를 샘플링 하는 대신, 보조변수 ϵ을 샘플링하고 이것과 x의 transformation을 통해 z가 정의되도록 하였다.
+
+
+## Example : Variational Auto-Encoder 
+
+확률적 인코더 qϕ(z∣x)를 신경망을 이용해 모델링하고 파라미터 θ와 ϕ가 AEVB알고리즘에 의해 동시에 최적화하는 예를 보여준다. 잠재변수 z에 대한 사전분포로는 중심화된 isotropic 다변량 정규분포를 가정한다.  
+또 디코더에 해당하는 확률분포 pθ(x∣z)는 신경망에 의해 파라미터가 결정되는 다변량정규분포 혹은 베르누이 분포로 가정한다.  
+z의 prior와 x가 주어졌을 때 z의 posterior 분포로 모두 정규분포를 가정하였으며 이 경우 Lower Bound의 추정량는 다음과 같이 구해진다.
+
+<img src ='https://velog.velcdn.com/images%2Fchangdaeoh%2Fpost%2Fa8717479-9126-48bc-bc94-44a25f89424d%2Fimage.png'>
+
+<img src ='https://velog.velcdn.com/images%2Fchangdaeoh%2Fpost%2Fe3a851a2-0768-4a7a-b139-df3318fb44f8%2Fimage.png'>
