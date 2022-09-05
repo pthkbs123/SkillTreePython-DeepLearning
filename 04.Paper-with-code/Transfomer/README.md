@@ -25,13 +25,13 @@ Machine translation 작업에 대한 실험 결과에 따르면, 이 모델은 �
 이 때 인코더의 내부 구조를 보자. 
 <img src ='https://miro.medium.com/max/1400/0*e_UzrRKgRYBP6bPY'>
 
-Self-Attention Layer의 내부 구조는 다음과 같다.
+Self-Attention Layer의 내부 구조는 다음과 같다.  
 <img src ='https://miro.medium.com/max/1370/0*s0dkdBvKmAz1MNd6'>
 
 ### Decoder
-인코더의 가장 상단에 있는 출력은 key와 value 벡터로 바뀐다. 이 key, value 벡터가 decoder의 각 encoder-decoder attention layer에 사용된다.
+인코더의 가장 상단에 있는 출력은 key와 value 벡터로 바뀐다. 이 key, value 벡터가 decoder의 각 encoder-decoder attention layer에 사용된다.  
 <img src ='https://miro.medium.com/max/1400/0*qSQNPa9uImuf1vWR'>
 
-다음 time-step에서는 decoder의 직전 output을 input으로 다시 받아, Decoder stacks를 거쳐 Linear+Softmax를 한 뒤, 다시 output을 뱉는 과정을 거친다.
+다음 time-step에서는 decoder의 직전 output을 input으로 다시 받아, Decoder stacks를 거쳐 Linear+Softmax를 한 뒤, 다시 output을 뱉는 과정을 거친다.  
 <img src ='https://miro.medium.com/max/1400/0*xB9EX8ua0Gw-hNsP'>
 
