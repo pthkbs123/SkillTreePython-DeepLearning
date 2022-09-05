@@ -11,7 +11,7 @@ Machine translation 작업에 대한 실험 결과에 따르면, 이 모델은 �
 
 
 <img src ='https://velog.velcdn.com/images%2Fguide333%2Fpost%2Ff1e8fe2a-2391-4d3e-8092-e2a17ef3eaea%2FScreenshot%20from%202021-04-15%2013-20-27.png'>
-*기존 구조의 경우.
+* 기존 구조의 경우.
 
 <img src ='https://velog.velcdn.com/images%2Ftobigs-nlp%2Fpost%2F6c68245c-4175-4f62-b4cd-f05099c9fa73%2Fimage.png'>
 두 구조를 비교를 해보면, sequential한 데이터 input이 들어왔을 때, transformer를 통과해서 ouput이 나오는데 RNN의 encoder-decoder 구조와 틀은 비슷하지만 transformer의 내부를 보면 encoding component와 decoding component가 존재하고 이 둘을 어떻게 연결시키는지가 다르다.
